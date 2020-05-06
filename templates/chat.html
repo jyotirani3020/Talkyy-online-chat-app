@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+        
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <title>Chat Away - Talkyy
+    </title>
+        
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <!-- Custom css for chat pages -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/chat.css') }}">
+</head>
+        
+<body>
+    <!-- Flash error messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <p class=formError>{{ messages[0] }}</p>
+        {% endif %}
+    {% endwith %}
+   
+    <div class="wrapper">
+
+    <header>
+        <div class="navbar navbar-expand-lg navbar-light fixed-top " style="padding-bottom: 60px;
+        border-bottom-width: 20px;
+        margin-bottom: 40px;
+        padding-top: 20px;">
+          <div class="container d-flex justify-content-between">
+            <a id = "nav-brand" style="font-size: 40px; font-family: 'Satisfy', cursive;">
+              <strong>Talky</strong>
+            </a>
+          </div>
+          <div class="container-fluid">
+            <div id="show-sidebar-button" class="cursor-pointer">
+                <i class="fas fa-plus-circle "></i>
+                <span>Rooms</span>
+            </div>
+                
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a id="logout-btn" class="nav-link" href="{{ url_for('logout') }}"><span style="color: #335177">Logout</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+      </header> 
+
+                
+    <!-- Main section start -->
+    <div id="main-section">
+                
+        <!-- Sidebar start -->
+        <nav id="sidebar">
+            <h4>Rooms</h4>
+            {% for room in rooms %}
+                <p id="{{ room|title }}" class="select_room cursor-pointer">{{ room|title }}</p>
+            {% endfor %}
+        </nav>
+        <!-- Sidebar end -->
+        
+        <!-- Rightside pannel start -->
+        <div id="rightside-pannel">
+                
+            <!-- Display message start-->
+            <div id="display_message_section">
+            </div>
+            <!-- Display message end -->
+                
+            <!-- Type message start -->
+        <div id="input-area" class="input-group mb-3">
+                <input type="text" id="user_message" class="form-control" placeholder="Type here..." aria-label="Type a message" aria-describedby="basic-addon2" autocomplete="off">
+                <div class="input-group-append">
+                    <button id="send_message" class="btn btn-warning" type="button" style="background-color: blanchedalmond; border-color: blanchedalmond;">SEND <i class="fas fa-paper-plane" ></i></button>
+                </div>
+        </div>
+            <!-- Type message end -->
+        </div>
+        <!-- Rightside pannel end -->
+    </div>
+        <!-- Main section end -->
+    </div>
+    <!-- Wrapper end -->
+        
+    <!-- Get username -->
+    <span id="get-username">{{ username }}</span>
+
+    <script src="{{ url_for('static', filename='scripts/chat_page.js') }}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='scripts/new.js') }}"></script>
+        
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        
+</body>
+</html>
+    
+        

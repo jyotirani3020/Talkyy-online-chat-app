@@ -1,0 +1,37 @@
+.formError {
+    list-style-type:none;
+    padding:0px;
+    color: red;
+}
+.card-body{
+    /* box-shadow: 3px 3px 4px #888888; */
+}
+.card{
+    position: absolute;
+    width: 532px;
+    height: 258px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+}
+
+.welcome h2{
+    font-size: 55px;
+}
+.welcome{
+    margin: auto;
+    position: absolute;
+    width: 308px;
+    height: 16px;
+
+    font-family:'Red Hat Text', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+
+    color: #000000;
+
+}

@@ -1,0 +1,13 @@
+{% macro displayField(fieldName, placeholderValue) %}
+
+<div class="form-group">
+    {{ fieldName(class = 'form-control', placeholder=placeholderValue, **kwargs) }}
+    <ul class=formError>
+        {% for error in fieldName.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endmacro %}
